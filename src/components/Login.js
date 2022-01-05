@@ -1,6 +1,14 @@
 import React from "react";
+import { useDispatch } from 'react-redux';
+import { setAuthedUser } from "../actions/authedUser";
+import { useNavigate } from "react-router-dom";
+
+
 
 const Login = () => {
+    const dispatch = useDispatch()
+    let navigate = useNavigate();
+
     return (
         // <section className="vh-100 mt-3">
         <section className="mt-3">
@@ -28,7 +36,12 @@ const Login = () => {
                                 type="submit"
                                 className="btn btn-dark mt-5"
                                 style={{ borderRadius: "5px" }}
-                            >Submit
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    dispatch(setAuthedUser("sarahedo"))
+                                    navigate(`/`);
+                                }}
+                            >Login
                             </button>
                         </form>
                     </div>
