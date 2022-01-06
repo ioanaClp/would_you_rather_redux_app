@@ -35,7 +35,7 @@ const Nav = () => {
                     <div className='container-fluid justify-content-end'>
                         <ul className='navbar-nav'>
                             <li className='nav-item'>
-                                <a className="nav-link" href="#">Hi <span>{currentUser}!</span></a>
+                                <a className="nav-link" href="#">Hi, <span>{currentUser.name}!</span></a>
                             </li>
                             <li className='nav-item'>
                                 <a className="nav-link" href="/login" onClick={(e) => {

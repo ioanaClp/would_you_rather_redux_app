@@ -1,13 +1,19 @@
-import React from "react";
-import { useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import { setAuthedUser } from "../actions/authedUser";
 import { useNavigate } from "react-router-dom";
-
-
 
 const Login = () => {
     const dispatch = useDispatch()
     let navigate = useNavigate();
+
+    const users = useSelector((store) => store.users)
+    const [selectedUser, setSelectedUser] = useState()
+
+    const handleLogInClick = (userId) => {
+        const user = users[userId]
+        setSelectedUser(user)
+    }
 
     return (
         // <section className="vh-100 mt-3">
@@ -26,10 +32,13 @@ const Login = () => {
                         <form>
                             <div className="form-group">
                                 <h5>Sign In:</h5>
-                                <select multiple="" className="form-select" id="signin-as">
-                                    <option>Sarah Edo</option>
-                                    <option>Tyler McGinnis</option>
-                                    <option>John Doe</option>
+                                <select onChange={(e) => handleLogInClick(e.target.value)} multiple="" className="form-select" id="signin-as">
+                                    {Object.values(users).map((user) =>
+                                        <option
+                                            key={user.id}
+                                            value={user.id}
+                                        >{user.name}</option>
+                                    )}
                                 </select>
                             </div>
                             <button
@@ -38,7 +47,13 @@ const Login = () => {
                                 style={{ borderRadius: "5px" }}
                                 onClick={(e) => {
                                     e.preventDefault()
-                                    dispatch(setAuthedUser("sarahedo"))
+                                    let user = selectedUser;
+
+                                    if (!selectedUser) {
+                                        user = Object.values(users)[0]
+                                    }
+
+                                    dispatch(setAuthedUser(user))
                                     navigate(`/`);
                                 }}
                             >Login

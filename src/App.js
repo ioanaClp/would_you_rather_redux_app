@@ -1,19 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Nav from "./components/Nav";
 import NewQuestion from "./components/NewQuestion";
-import UserInfoCard from "./components/UserInfoCard";
 import Login from "./components/Login";
-import QuestionCard from "./components/QuestionCard";
-import HomePollCard from "./components/HomePollCard";
-import ResultCard from "./components/ResultCard";
 import Home from "./components/Home";
 import Leaderboard from "./components/Leaderboard";
 import {
   Routes,
   Route,
 } from "react-router-dom";
+import { handleInitialData } from "./actions/shared";
+import { useDispatch } from 'react-redux';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(handleInitialData())
+  }, [])
+
   return (
     <div>
       <Nav />
