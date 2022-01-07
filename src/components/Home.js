@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import HomePollCard from './HomePollCard'
 import { useSelector } from 'react-redux'
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
     const [currentCategory, setCurrentCategory] = useState("unanswered")
@@ -8,6 +9,7 @@ const Home = () => {
     const questions = useSelector((store) => store.questions)
     const users = useSelector((store) => store.users)
     const currentUser = useSelector((store) => store.authedUser)
+    let navigate = useNavigate();
 
     const handleShowAnsweredQuestions = () => {
         setCurrentCategory("answered")
@@ -15,6 +17,10 @@ const Home = () => {
 
     const handleShowUnansweredQuestions = () => {
         setCurrentCategory("unanswered")
+    }
+
+    const handleOnClickViewPoll = (question) => {
+        navigate(`/questions/${question.id}`);
     }
 
     return (
@@ -61,7 +67,7 @@ const Home = () => {
                         } else {
                             return true;
                         }
-                    }).map((question) => <HomePollCard question={question} user={users[question.author]} key={question.id} />)}
+                    }).map((question) => <HomePollCard question={question} user={users[question.author]} onClickViewPoll={() => handleOnClickViewPoll(question)} key={question.id} />)}
                 </div>
             }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const HomePollCard = ({ question, user }) => {
+const HomePollCard = ({ question, user, onClickViewPoll }) => {
     return (
         <div>
             <div className="container">
@@ -21,6 +21,7 @@ const HomePollCard = ({ question, user }) => {
                                 type="submit"
                                 className="btn btn-dark mt-3"
                                 style={{ borderRadius: "5px" }}
+                                onClick={onClickViewPoll}
                             >View Poll
                             </button>
                         </div>
