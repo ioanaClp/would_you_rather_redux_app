@@ -7,7 +7,9 @@ const Nav = () => {
     const dispatch = useDispatch()
     let navigate = useNavigate();
 
-    const currentUser = useSelector((store) => store.authedUser)
+    const currentUserId = useSelector((store) => store.authedUser)
+    const users = useSelector((store) => store.users)
+    const currentUser = users[currentUserId]
 
     return (
         <nav className='header navbar navbar-expand-lg navbar-dark bg-dark'>

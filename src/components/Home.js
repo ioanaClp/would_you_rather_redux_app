@@ -4,12 +4,16 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+    let navigate = useNavigate();
+
     const [currentCategory, setCurrentCategory] = useState("unanswered")
 
     const questions = useSelector((store) => store.questions)
     const users = useSelector((store) => store.users)
-    const currentUser = useSelector((store) => store.authedUser)
-    let navigate = useNavigate();
+    const authedUserId = useSelector((store) => store.authedUser)
+
+    const currentUser = users[authedUserId]
+
 
     const handleShowAnsweredQuestions = () => {
         setCurrentCategory("answered")

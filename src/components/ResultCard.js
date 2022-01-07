@@ -14,7 +14,7 @@ const ResultCard = () => {
                             alt="..." />
                     </div>
                     <div className="col-md-8">
-                        <h3 className="mt-4">Results:</h3>
+                        <h3 className="mt-3">Results:</h3>
                         <p>Would you rather...</p>
                         <div className="progress">
                             <div
@@ -25,7 +25,8 @@ const ResultCard = () => {
                                 style={{ width: "66.7%" }}>
                             </div>
                         </div>
-                        <p>2 out of 3 votes</p>
+                        <p className="mt-2">2 out of 3 votes</p>
+                        <hr />
                         <p>Would you rather...</p>
                         <div className="progress">
                             <div
@@ -36,7 +37,7 @@ const ResultCard = () => {
                                 style={{ width: "33.3%" }}>
                             </div>
                         </div>
-                        <p>1 out of 3 votes</p>
+                        <p className="mt-2">1 out of 3 votes</p>
                     </div>
                 </div>
             </div>

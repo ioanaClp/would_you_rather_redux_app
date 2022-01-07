@@ -7,7 +7,9 @@ import { useNavigate } from "react-router-dom";
 const NewQuestion = () => {
     const [inputValueOne, setInputValueOne] = useState('');
     const [inputValueTwo, setInputValueTwo] = useState('');
-    const user = useSelector((store) => store.authedUser);
+    const userId = useSelector((store) => store.authedUser);
+    const users = useSelector((store) => store.users);
+    const user = users[userId]
     const dispatch = useDispatch();
     let navigate = useNavigate();
 

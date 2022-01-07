@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 function PrivateRoute({ children }) {
     let auth = useSelector((store) => store.authedUser);
-    console.log("lucitest", auth)
     let location = useLocation();
 
     if (!auth) {

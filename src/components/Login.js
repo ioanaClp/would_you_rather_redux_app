@@ -52,7 +52,7 @@ const Login = () => {
                                         user = Object.values(users)[0]
                                     }
 
-                                    dispatch(setAuthedUser(user))
+                                    dispatch(setAuthedUser(user.id))
                                     navigate(`/`);
                                 }}
                             >Login
