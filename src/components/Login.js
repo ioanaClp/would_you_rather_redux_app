@@ -22,9 +22,8 @@ const Login = () => {
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col-md-9 col-lg-6 col-xl-5">
                         <img
-                            src="https://i.pinimg.com/564x/5b/3b/45/5b3b454be9dacf79b1a9302bf1408c1d.jpg"
+                            src="https://i.pinimg.com/564x/93/64/ae/9364ae370f7b3886669313eec8380797.jpg"
                             className="img-fluid"
-                            style={{ width: "80%" }}
                             alt="Login image" />
                     </div>
                     <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">

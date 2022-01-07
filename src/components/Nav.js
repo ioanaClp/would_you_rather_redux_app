@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { setAuthedUser } from "../actions/authedUser";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Nav = () => {
     const dispatch = useDispatch()
@@ -19,15 +19,15 @@ const Nav = () => {
                     <div className='container justify-content-center'>
                         <ul className='navbar-nav'>
                             <li className="nav-item">
-                                <a className="nav-link active" href="/">Home
+                                <Link className="nav-link active" to="/">Home
                                     <span className="visually-hidden">(current)</span>
-                                </a>
+                                </Link>
                             </li>
                             <li className='nav-item'>
-                                <a className="nav-link" href="/add">New Question</a>
+                                <Link className="nav-link" to="/add">New Question</Link>
                             </li>
                             <li className='nav-item'>
-                                <a className="nav-link" href="/leaderboard">Leader Board</a>
+                                <Link className="nav-link" to="/leaderboard">Leader Board</Link>
                             </li>
                         </ul>
                     </div>
@@ -35,14 +35,22 @@ const Nav = () => {
                     <div className='container-fluid justify-content-end'>
                         <ul className='navbar-nav'>
                             <li className='nav-item'>
-                                <a className="nav-link" href="#">Hi, <span>{currentUser.name}!</span></a>
+                                <a className="nav-link" href="#">
+                                    <img
+                                        src={currentUser.avatarURL}
+                                        width="30"
+                                        height="30"
+                                        className="d-inline-block align-top mx-2"
+                                        style={{ borderRadius: "20px" }}
+                                        alt="" />
+                                    Hi, <span>{currentUser.name}!</span></a>
                             </li>
                             <li className='nav-item'>
-                                <a className="nav-link" href="/login" onClick={(e) => {
+                                <Link className="nav-link" to="/login" onClick={(e) => {
                                     e.preventDefault()
                                     dispatch(setAuthedUser(null))
                                     navigate(`/login`);
-                                }}>Logout</a>
+                                }}>Logout</Link>
                             </li>
                         </ul>
                     </div>

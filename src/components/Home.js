@@ -19,7 +19,7 @@ const Home = () => {
 
     return (
         <div className="container mt-3">
-            <ul className="nav nav-pills">
+            <ul className="nav nav-pills my-4">
                 <li className="nav-item">
                     <a
                         className={`nav-link ${currentCategory === "unanswered" ? "active" : ""}`}

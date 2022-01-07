@@ -2,7 +2,7 @@ let users = {
     sarahedo: {
         id: 'sarahedo',
         name: 'Sarah Edo',
-        avatarURL: 'https://i.pinimg.com/736x/6b/b4/9f/6bb49f29001b674c62d095d433979e38.jpg',
+        avatarURL: 'https://i.pinimg.com/236x/7b/34/e7/7b34e71535653784b99042c4a17bd238.jpg',
         answers: {
             "8xf0y6ziyjabvozdd253nd": 'optionOne',
             "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -14,7 +14,7 @@ let users = {
     tylermcginnis: {
         id: 'tylermcginnis',
         name: 'Tyler McGinnis',
-        avatarURL: 'https://i.pinimg.com/564x/0a/e4/5d/0ae45d3dabc952a48d61e9706b13af0b.jpg',
+        avatarURL: 'https://i.pinimg.com/564x/76/62/f2/7662f21e2a894e45c72dbd88c8b5945a.jpg',
         answers: {
             "vthrdm985a262al8qx3do": 'optionOne',
             "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -131,7 +131,7 @@ export function _getQuestions() {
     })
 }
 
-function formatQuestion({ optionOneText, optionTwoText, author }) {
+export function formatQuestion({ optionOneText, optionTwoText, author }) {
     return {
         id: generateUID(),
         timestamp: Date.now(),
