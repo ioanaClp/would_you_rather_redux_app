@@ -29,7 +29,6 @@ const NewQuestion = () => {
       optionTwoText: inputValueTwo,
       author: user.id,
     });
-    console.log(newQuestion);
 
     dispatch(createNewQuestion(newQuestion));
     navigate(`/`);

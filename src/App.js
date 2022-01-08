@@ -12,7 +12,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import ViewPollPage from "./components/ViewPollPage";
 import LoadingBar from "react-redux-loading";
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
   const questions = useSelector((store) => store.questions);
   const loaded = Object.keys(questions).length > 0;
