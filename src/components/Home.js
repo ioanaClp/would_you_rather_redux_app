@@ -14,7 +14,6 @@ const Home = () => {
 
     const currentUser = users[authedUserId]
 
-
     const handleShowAnsweredQuestions = () => {
         setCurrentCategory("answered")
     }
@@ -50,28 +49,33 @@ const Home = () => {
             </ul>
             {
                 currentCategory === "answered" ? <div>
-                    {Object.keys(currentUser.answers).map(questionId => {
-                        const question = questions[questionId]
-                        return <HomePollCard question={question} user={users[question.author]} key={question.id} />
-                    }
-                    )}
-                </div> : <div>
-                    {Object.values(questions).filter(question => {
-                        // The list of ids for which the current login user has answered
-                        const allQuestionIdsThatWereAnswered = Object.keys(currentUser.answers)
-
-                        // Check if the current question is part of the answered list
-                        const hasAnsweredThisQuestion = allQuestionIdsThatWereAnswered.includes(question.id)
-
-                        // If the current question is part of the answered list it means that is not part of unanswered list
-                        if (hasAnsweredThisQuestion) {
-                            return false
-
-                            // otherwise is part of unaswered list so we keep it in the list
-                        } else {
-                            return true;
+                    {Object.keys(currentUser.answers)
+                        .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+                        .map(questionId => {
+                            const question = questions[questionId]
+                            return <HomePollCard question={question} user={users[question.author]} key={question.id} />
                         }
-                    }).map((question) => <HomePollCard question={question} user={users[question.author]} onClickViewPoll={() => handleOnClickViewPoll(question)} key={question.id} />)}
+                        )}
+                </div> : <div>
+                    {Object.values(questions)
+                        .sort((a, b) => b.timestamp - a.timestamp)
+                        .filter(question => {
+                            // The list of ids for which the current login user has answered
+                            const allQuestionIdsThatWereAnswered = Object.keys(currentUser.answers)
+
+                            // Check if the current question is part of the answered list
+                            const hasAnsweredThisQuestion = allQuestionIdsThatWereAnswered.includes(question.id)
+
+                            // If the current question is part of the answered list it means that is not part of unanswered list
+                            if (hasAnsweredThisQuestion) {
+                                return false
+
+                                // otherwise is part of unaswered list so we keep it in the list
+                            } else {
+                                return true;
+                            }
+                        })
+                        .map((question) => <HomePollCard question={question} user={users[question.author]} onClickViewPoll={() => handleOnClickViewPoll(question)} key={question.id} />)}
                 </div>
             }
 

@@ -13,7 +13,7 @@ const UserInfoCard = () => {
                     </div>
                     <div className="col-md-8">
                         <div className="card-body m-3">
-                            <h3 className="card-title">1st Place</h3>
+                            <h3 className="card-title mt-4">1st Place</h3>
                             <hr />
                             <h3 className="card-title">Sarah Edo</h3>
                             <p className="card-text">Answered questions: <span className="answered-questions">9</span></p>

@@ -1,12 +1,16 @@
-import React from 'react'
+import React from 'react';
+import { formatDate } from "../utils/heplers";
 
 const HomePollCard = ({ question, user, onClickViewPoll }) => {
+    const { timestamp } = question
+
     return (
         <div>
             <div className="container">
                 <div className="card my-3 p-3">
                     <div className="row g-0">
-                        <h3 className="m-3">{user.name} asks:</h3>
+                        <h3 className="mx-3">{user.name} asks:</h3>
+                        <p className="mx-3">{formatDate(timestamp)}</p>
                         <hr />
                         <div className="col-md-4">
                             <img
