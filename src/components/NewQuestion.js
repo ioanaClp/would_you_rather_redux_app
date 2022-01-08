@@ -18,10 +18,10 @@ const NewQuestion = () => {
 
     if (inputValueOne === "") {
       alert("First input is empty!");
-    }
-
-    if (inputValueTwo === "") {
+      return;
+    } else if (inputValueTwo === "") {
       alert("Second input is empty!");
+      return;
     }
 
     const newQuestion = formatQuestion({
