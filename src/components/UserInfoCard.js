@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserInfoCard = () => {
+const UserInfoCard = ({ position, user }) => {
     return (
         <div className="container">
             <div className="card my-3">
@@ -13,13 +13,13 @@ const UserInfoCard = () => {
                     </div>
                     <div className="col-md-8">
                         <div className="card-body m-3">
-                            <h3 className="card-title mt-4">1st Place</h3>
+                            <h3 className="card-title mt-4">{position} Place</h3>
                             <hr />
-                            <h3 className="card-title">Sarah Edo</h3>
-                            <p className="card-text">Answered questions: <span className="answered-questions">9</span></p>
-                            <p className="card-text">Created questions: <span className="created-questions">3</span></p>
+                            <h3 className="card-title">{user.name}</h3>
+                            <p className="card-text">Answered questions: <span className="answered-questions">{Object.keys(user.answers).length}</span></p>
+                            <p className="card-text">Created questions: <span className="created-questions">{user.questions.length}</span></p>
                             <hr />
-                            <h3>Score: <span className="score">10</span> points</h3>
+                            <h3>Score: <span className="score">{user.score}</span> points</h3>
                         </div>
                     </div>
                 </div>

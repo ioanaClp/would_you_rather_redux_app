@@ -53,7 +53,7 @@ const Home = () => {
                         .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
                         .map(questionId => {
                             const question = questions[questionId]
-                            return <HomePollCard question={question} user={users[question.author]} key={question.id} />
+                            return <HomePollCard question={question} user={users[question.author]} onClickViewPoll={() => handleOnClickViewPoll(question)} key={question.id} />
                         }
                         )}
                 </div> : <div>

@@ -15,7 +15,7 @@ const Nav = () => {
     return (
         <nav className='header navbar navbar-expand-lg navbar-dark bg-dark'>
             <div className="container-fluid">
-                <a className="navbar-brand h6" href="#">WouldYouRatherApp</a>
+                <Link className="navbar-brand h6" to="/">WouldYouRatherApp</Link>
             </div>
             {currentUser &&
                 <Fragment>
@@ -38,7 +38,7 @@ const Nav = () => {
                     <div className='container-fluid justify-content-end'>
                         <ul className='navbar-nav'>
                             <li className='nav-item'>
-                                <a className="nav-link" href="#">
+                                <div className="nav-link">
                                     <img
                                         src={currentUser.avatarURL}
                                         width="30"
@@ -46,7 +46,8 @@ const Nav = () => {
                                         className="d-inline-block align-top mx-2"
                                         style={{ borderRadius: "20px" }}
                                         alt="" />
-                                    Hi, <span>{currentUser.name}!</span></a>
+                                    Hi, <span>{currentUser.name}!</span>
+                                </div>
                             </li>
                             <li className='nav-item'>
                                 <Link className="nav-link" to="/login" onClick={(e) => {

@@ -1,6 +1,15 @@
 import React from 'react'
 
-const ResultCard = () => {
+const ResultCard = ({ question, authedUserId }) => {
+    const totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length
+    const optionOneVotes = question.optionOne.votes.length
+    const optionTwoVotes = question.optionTwo.votes.length
+
+    const optionOneProgressPercentage = optionOneVotes === 0 ? 0 : (optionOneVotes / totalVotes * 100)
+    const optionTwoProgressPercentage = optionTwoVotes === 0 ? 0 : (optionTwoVotes / totalVotes * 100)
+
+    const hasAnsweredFirstOption = question.optionOne.votes.includes(authedUserId)
+    const hasAnsweredSecondOption = question.optionTwo.votes.includes(authedUserId)
     return (
         <div className="container">
             <div className="card my-3 p-3">
@@ -15,29 +24,30 @@ const ResultCard = () => {
                     </div>
                     <div className="col-md-8">
                         <h3 className="mt-3">Results:</h3>
-                        <p>Would you rather...</p>
+
+                        <p>{question.optionOne.text} {hasAnsweredFirstOption && <span className="text-warning"><strong>(Your answer)</strong></span>}</p>
                         <div className="progress">
                             <div
                                 className="progress-bar progress-bar-striped progress-bar-animated"
                                 role="progressbar"
                                 aria-valuemin="0"
                                 aria-valuemax="100"
-                                style={{ width: "66.7%" }}>
+                                style={{ width: `${optionOneProgressPercentage}%` }}>
                             </div>
                         </div>
-                        <p className="mt-2">2 out of 3 votes</p>
+                        <p className="mt-2">{optionOneVotes} out of {totalVotes} votes</p>
                         <hr />
-                        <p>Would you rather...</p>
+                        <p>{question.optionTwo.text} {hasAnsweredSecondOption && <span className="text-warning"><strong>(Your answer)</strong></span>}</p>
                         <div className="progress">
                             <div
                                 className="progress-bar progress-bar-striped progress-bar-animated"
                                 role="progressbar"
                                 aria-valuemin="0"
                                 aria-valuemax="100"
-                                style={{ width: "33.3%" }}>
+                                style={{ width: `${optionTwoProgressPercentage}%` }}>
                             </div>
                         </div>
-                        <p className="mt-2">1 out of 3 votes</p>
+                        <p className="mt-2">{optionTwoVotes} out of {totalVotes} votes</p>
                     </div>
                 </div>
             </div>

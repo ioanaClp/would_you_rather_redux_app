@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { answerQuestion } from '../actions/questions';
+import { useSelector } from 'react-redux';
 
-const QuestionCard = ({ question, user }) => {
+const QuestionCard = ({ question, user, onQuestionAnswered }) => {
     const [selectAnOption, setSelectAnOption] = useState();
-    const dispatch = useDispatch();
 
     const authedUserId = useSelector((store) => store.authedUser)
     const users = useSelector((store) => store.users)
@@ -60,7 +58,7 @@ const QuestionCard = ({ question, user }) => {
                                     e.preventDefault()
 
                                     if (selectAnOption) {
-                                        dispatch(answerQuestion(question, authedUser, selectAnOption))
+                                        onQuestionAnswered(question, authedUser, selectAnOption)
                                     } else {
                                         alert("Please choose an option and then submit your answer!")
                                     }
