@@ -2,20 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
-import { createStore, compose } from "redux";
+import { createStore } from "redux";
 import reducer from "./reducers";
 import middleware from "./middleware";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 
-// Midleware for having the redux chrome debug feature
-const reduxChromeDebugMidleware =
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-
 //Create the redux store
 const store = createStore(
   reducer,
-  compose(middleware, reduxChromeDebugMidleware)
+  middleware
 );
 
 ReactDOM.render(
