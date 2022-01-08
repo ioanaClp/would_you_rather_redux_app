@@ -12,7 +12,7 @@ const Leaderboard = () => {
                     user.score = Object.keys(user.answers).length + user.questions.length
                     return user;
                 }).sort((a, b) => b.score - a.score)
-                .map((user, index) => <UserInfoCard position={index + 1} user={user} />)}
+                .map((user, index) => <UserInfoCard key={user.id} position={index + 1} user={user} />)}
         </div>
     )
 }

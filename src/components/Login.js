@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setAuthedUser } from "../actions/authedUser";
 import { useNavigate } from "react-router-dom";
 import { saveLoginToLocalStorage } from "../utils/persistance"
+import { redirectAfterLogin } from "../actions/navigation"
 
 const Login = () => {
     const dispatch = useDispatch()
     let navigate = useNavigate();
 
     const users = useSelector((store) => store.users)
+    const afterLoginNavigation = useSelector((store) => store.navigation)
     const [selectedUser, setSelectedUser] = useState()
 
     const handleLogInClick = (userId) => {
@@ -55,7 +57,13 @@ const Login = () => {
 
                                     saveLoginToLocalStorage(user.id)
                                     dispatch(setAuthedUser(user.id))
-                                    navigate(`/`);
+
+                                    if (afterLoginNavigation) {
+                                        navigate(afterLoginNavigation);
+                                        dispatch(redirectAfterLogin(null))
+                                    } else {
+                                        navigate(`/`);
+                                    }
                                 }}
                             >Login
                             </button>
