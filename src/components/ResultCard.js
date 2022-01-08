@@ -50,7 +50,7 @@ const ResultCard = ({ question, user, authedUserId }) => {
                                 aria-valuemax="100"
                                 style={{ width: `${optionOneProgressPercentage}%` }}
                             ></div>
-                            <span className="mx-1">{optionOneProgressPercentage}%</span>
+                            <span className="mx-1">{optionOneProgressPercentage.toFixed(2)}%</span>
                         </div>
                         <p className="mt-2">
                             {optionOneVotes} out of {totalVotes} votes
@@ -72,7 +72,7 @@ const ResultCard = ({ question, user, authedUserId }) => {
                                 aria-valuemax="100"
                                 style={{ width: `${optionTwoProgressPercentage}%` }}
                             ></div>
-                            <span className="mx-1">{optionTwoProgressPercentage}%</span>
+                            <span className="mx-1">{optionTwoProgressPercentage.toFixed(2)}%</span>
                         </div>
                         <p className="mt-2">
                             {optionTwoVotes} out of {totalVotes} votes
