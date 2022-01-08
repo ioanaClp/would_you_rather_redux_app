@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { removeLoginToLocalStorage } from "../utils/persistance";
 
 const Nav = () => {
   const dispatch = useDispatch();
@@ -80,7 +79,6 @@ const Nav = () => {
                   onClick={(e) => {
                     e.preventDefault();
                     dispatch(setAuthedUser(null));
-                    removeLoginToLocalStorage();
                     navigate(`/login`);
                   }}
                 >

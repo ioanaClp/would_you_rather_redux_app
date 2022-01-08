@@ -19,7 +19,7 @@ export function saveNewQuestion(question) {
 }
 
 export function saveQuestionAnswer(authedUserId, questionId, option) {
-  return _saveQuestion({
+  return _saveQuestionAnswer({
     authedUser: authedUserId,
     qid: questionId,
     answer: option,

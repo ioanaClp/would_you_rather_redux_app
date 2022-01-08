@@ -2,17 +2,9 @@ import { getInitialData } from "../utils/api";
 import { receiveQuestions } from "./questions";
 import { receiveUsers } from "./users";
 import { showLoading, hideLoading } from "react-redux-loading";
-import { setAuthedUser } from "./authedUser";
-import { getLoginFromLocalStorage } from "../utils/persistance";
 
 export function handleInitialData() {
   return (dispatch) => {
-    // If user was previously logged in we take that data from local storage
-    const loggedInUserId = getLoginFromLocalStorage();
-    if (loggedInUserId) {
-      dispatch(setAuthedUser(loggedInUserId));
-    }
-
     dispatch(showLoading());
 
     return (

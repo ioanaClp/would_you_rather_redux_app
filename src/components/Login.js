@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
 import { useNavigate } from "react-router-dom";
-import { saveLoginToLocalStorage } from "../utils/persistance";
 import { redirectAfterLogin } from "../actions/navigation";
 
 const Login = () => {
@@ -60,7 +59,6 @@ const Login = () => {
                     user = Object.values(users)[0];
                   }
 
-                  saveLoginToLocalStorage(user.id);
                   dispatch(setAuthedUser(user.id));
 
                   if (afterLoginNavigation) {
