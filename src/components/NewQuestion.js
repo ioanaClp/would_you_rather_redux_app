@@ -3,6 +3,7 @@ import { formatQuestion } from "../utils/_DATA";
 import { useDispatch, useSelector } from "react-redux";
 import { createNewQuestion } from "../actions/questions";
 import { useNavigate } from "react-router-dom";
+import { saveNewQuestion } from "../utils/api"
 
 const NewQuestion = () => {
   const [inputValueOne, setInputValueOne] = useState("");
@@ -24,13 +25,17 @@ const NewQuestion = () => {
       return;
     }
 
-    const newQuestion = formatQuestion({
+    const unformatedQuestion = {
       optionOneText: inputValueOne,
       optionTwoText: inputValueTwo,
       author: user.id,
+    }
+    const newQuestion = formatQuestion({
+      ...unformatedQuestion
     });
 
     dispatch(createNewQuestion(newQuestion));
+    saveNewQuestion(unformatedQuestion)
     navigate(`/`);
   };
 

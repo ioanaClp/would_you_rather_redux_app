@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import NotFoundPage from "./NotFoundPage";
 import { answerQuestion } from "../actions/questions";
 import ResultCard from "./ResultCard";
+import { saveQuestionAnswer } from "../utils/api"
 
 const ViewPollPage = () => {
     let { questionId } = useParams();
@@ -24,6 +25,7 @@ const ViewPollPage = () => {
 
     const onQuestionAnswered = (question, authedUser, selectAnOption) => {
         dispatch(answerQuestion(question, authedUser, selectAnOption));
+        saveQuestionAnswer(authedUser.id, question.id, selectAnOption)
         setHasClickedAnswer(true);
     };
 

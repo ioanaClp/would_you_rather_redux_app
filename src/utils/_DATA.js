@@ -157,7 +157,7 @@ export function _saveQuestion(question) {
   return new Promise((res, rej) => {
     const authedUser = question.author;
     const formattedQuestion = formatQuestion(question);
-
+    console.log("lucitest here", question)
     setTimeout(() => {
       questions = {
         ...questions,
@@ -201,6 +201,9 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
           },
         },
       };
+
+      console.log("lucitest _saveQuestionAnswer questions", questions)
+      console.log("lucitest _saveQuestionAnswer user", users)
 
       res();
     }, 500);
