@@ -9,9 +9,6 @@ const Nav = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    console.log("location", location)
-
-
     const currentUserId = useSelector((store) => store.authedUser);
     const users = useSelector((store) => store.users);
     const currentUser = users[currentUserId];
